@@ -1,0 +1,52 @@
+import { StrictMode, Component } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null, errorInfo: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+    this.setState({ errorInfo });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '2rem', backgroundColor: '#fef2f2', color: '#991b1b', height: '100vh', fontFamily: 'monospace' }}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>Something went wrong.</h1>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
+            <summary style={{ cursor: 'pointer', marginBottom: '1rem' }}>Click for error details</summary>
+            {this.state.error && this.state.error.toString()}
+            <br />
+            {this.state.errorInfo && this.state.errorInfo.componentStack}
+          </details>
+          <button
+            onClick={() => window.location.reload()}
+            style={{ marginTop: '2rem', padding: '0.5rem 1rem', backgroundColor: '#991b1b', color: 'white', border: 'none', borderRadius: '0.25rem', cursor: 'pointer' }}
+          >
+            Reload Page
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </StrictMode>,
+)
