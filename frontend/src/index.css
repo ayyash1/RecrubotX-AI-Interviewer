@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Semantic Colors */
+  --color-primary: #4f46e5;
+  /* Indigo 600 */
+  --color-primary-dark: #4338ca;
+  /* Indigo 700 */
+  --color-accent: #3b82f6;
+  /* Blue 500 */
+
+  --color-bg-app: #f8fafc;
+  /* Slate 50 */
+  --color-bg-card: #ffffff;
+  --color-border: #e2e8f0;
+  /* Slate 200 */
+
+  --color-text-main: #0f172a;
+  /* Slate 900 */
+  --color-text-muted: #64748b;
+  /* Slate 500 */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.h1 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+}
+
+.h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+}
+
+.h3 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* Component Utilities */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Glassmorphism / Dark Mode Overrides for Interview Room */
+.dark-theme .glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .glass-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.dark-theme text-white {
+  color: #fff;
+}
+
+/* Status Indicators */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.status-dot.busy {
+  background-color: #eab308;
+}
+
+.status-dot.speaking {
+  background-color: #3b82f6;
+  animation: pulse-ring 2s infinite;
+}
+
+/* Layout Helpers */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  width: 280px;
+  border-right: 1px solid var(--color-border);
+  background: white;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav-item.active {
+  background-color: #eff6ff;
+  /* Blue 50 */
+  color: var(--color-primary);
+}
+
+.sidebar-nav-item:hover:not(.active) {
+  background-color: #f8fafc;
+  /* Slate 50 */
+  color: var(--color-text-main);
+}
+
+.dashboard-main {
+  margin-left: 280px;
+  /* Sidebar width */
+  padding: 3rem;
+  width: calc(100% - 280px);
+}
