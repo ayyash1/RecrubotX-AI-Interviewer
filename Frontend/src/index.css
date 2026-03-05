@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────
+   RecruBotX — Theme Scrollbar (global + .theme-scrollbar)
+───────────────────────────────────────────────────── */
+
+/* Global scrollbar — applies everywhere */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f4ff;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0a2a5e 0%, #1a4a9e 100%);
+  border-radius: 999px;
+  border: 1px solid #e8edf8;
+  transition: background 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #061a3d 0%, #0a2a5e 100%);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0a2a5e #f0f4ff;
+}
+
+/* Utility class for areas that need the theme scrollbar explicitly */
+.theme-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.theme-scrollbar::-webkit-scrollbar-track {
+  background: #f0f4ff;
+  border-radius: 999px;
+}
+.theme-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0a2a5e 0%, #1a4a9e 100%);
+  border-radius: 999px;
+}
+.theme-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #061a3d;
+}
+
+/* ─────────────────────────────────────────────────────
+   Modal pop-in animation
+───────────────────────────────────────────────────── */
+@keyframes modalPop {
+  0%   { opacity: 0; transform: scale(0.92) translateY(16px); }
+  100% { opacity: 1; transform: scale(1)    translateY(0); }
+}

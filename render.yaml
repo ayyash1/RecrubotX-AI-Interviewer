@@ -1,0 +1,55 @@
+services:
+  # Backend: FastAPI Web Service (Dockerized)
+  - type: web
+    name: recrubotx-backend
+    runtime: docker
+    rootDir: Backend
+    plan: starter # Docker requires at least the starter plan on Render for some features, but let's keep it simple
+    envVars:
+      - key: MONGODB_URL
+        sync: false # Set manually in Render dashboard
+      - key: GEMINI_API_KEY
+        sync: false # Set manually in Render dashboard
+      - key: DEEPGRAM_API_KEY
+        sync: false # Set manually in Render dashboard
+      - key: ALLOWED_ORIGINS
+        value: https://recrubotx.vercel.app,https://recrubotx.onrender.com
+      - key: PORT
+        value: 10000
+      - key: APP_ENV
+        value: production
+
+      # Email OTP (API-based, no SMTP)
+      - key: EMAIL_PROVIDER
+        value: brevo
+      - key: BREVO_API_KEY
+        sync: false # Set manually in Render dashboard
+      - key: EMAIL_FROM_EMAIL
+        sync: false # Set manually in Render dashboard
+      - key: EMAIL_FROM_NAME
+        value: RecruBotX
+
+      # Optional alternative provider
+      - key: RESEND_API_KEY
+        sync: false # Set manually in Render dashboard
+      - key: RESEND_FROM
+        value: RecruBotX <onboarding@resend.dev>
+
+  # Frontend: React Static Site
+  - type: web
+    name: recrubotx-frontend
+    runtime: static
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    publishDir: build
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://recrubotx.onrender.com/api # Change to your actual backend URL

@@ -1,0 +1,65 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+cv
+cv_screener/parsed_cv.json
+uv
+
+
+vc_agent/output
+vc_agent/.vscode
+vc_agent/.venv
+.env
+
+# Virtual environment
+vc_agent/.venv/
+
+# Environment variables (contains API keys)
+vc_agent/.env
+
+# Python cache
+vc_agent/__pycache__/
+vc_agent/*.py[cod]
+vc_agent/*$py.class
+vc_agent/*.so
+
+# Interview output reports (generated files)
+vc_agent/output/
+
+# VS Code settings (optional - remove if you want to share settings)
+vc_agent/.vscode/
+
+# OS generated files
+vc_agent/.DS_Store
+vc_agent/Thumbs.db
+
+# Logs
+vc_agent/*.log
+
+# Temporary files
+vc_agent/*.tmp
+vc_agent/*.temp
+
+# Audio files (if generated locally)
+
+# Uploaded CV files
+uploads/
+uploads/interview_cvs/*.pdf
+vc_agent/*.wav
+vc_agent/*.mp3
+vc_agent/*.ogg
+
+# Distribution / packaging
+vc_agent/dist/
+vc_agent/build/
+vc_agent/*.egg-info/
+
+
+output/

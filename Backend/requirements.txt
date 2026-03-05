@@ -1,0 +1,55 @@
+fastapi>=0.104.0
+uvicorn>=0.24.0
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+PyPDF2>=3.0.0
+python-docx>=1.1.0
+aiofiles>=23.2.0
+motor>=3.3.0
+pymongo>=4.6.0
+dnspython>=2.3.0
+
+# Audio processing
+sounddevice>=0.4.6
+soundfile>=0.12.1
+deepgram-sdk>=3.0.0
+edge-tts
+#PyAudio>=0.2.13
+
+# API requests
+requests>=2.31.0
+httpx>=0.25.0
+
+# Google Generative AI (stable version)
+google-genai
+
+# Groq LLM
+groq
+
+# LangChain + LangSmith
+langchain>=0.3.0
+langchain-google-genai>=2.0.0
+langsmith>=0.1.0
+
+# Hugging Face (AI image generation)
+huggingface_hub>=0.24.0
+
+# Image processing (text overlay on AI image)
+Pillow>=10.0.0
+
+reportlab>=3.6.12
+
+opencv-python
+numpy
+mediapipe
+deepface
+tensorflow
+
+websockets
+pydantic
+python-multipart
+
+# Superuser auth
+PyJWT>=2.8.0
+bcrypt>=4.0.0
